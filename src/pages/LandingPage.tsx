@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import {
-  Repeat,
   ShieldCheck,
   Leaf,
   GraduationCap,
@@ -10,74 +9,90 @@ import {
   QrCode,
   Sparkles,
   Building2,
-  Users,
   CheckCircle2,
   DollarSign,
   Layers,
   Smartphone,
   BookOpen,
   Award,
-  ExternalLink,
   ChevronRight,
-  BarChart3,
   Lock,
-  Globe2,
-  Zap,
+  Repeat,
+  HeartHandshake,
+  ArrowLeftRight,
+  BookMarked,
+  Calculator,
+  Compass,
 } from 'lucide-react';
 
 export const LandingPage: React.FC = () => {
-  const [activeTab, setActiveTab] = useState<'BUY_SELL' | 'BORROW' | 'EXCHANGE' | 'DONATE' | 'DIGITAL'>('BUY_SELL');
+  const [activeTab, setActiveTab] = useState<'BUY' | 'SELL' | 'BORROW' | 'EXCHANGE' | 'DONATE'>('BUY');
 
   const circularActions = [
     {
-      id: 'BUY_SELL',
-      title: 'Buy & Sell',
+      id: 'BUY',
+      title: 'BUY',
+      sub: 'Affordable Textbooks & Tech',
       badge: 'Zero Markup',
-      desc: 'Affordable peer-to-peer textbook and gadget resale within your campus perimeter. No third-party commissions.',
+      desc: 'Purchase verified textbooks, graphing calculators, lab coats, and electronics from fellow students at up to 70% off retail prices with zero third-party commissions.',
       stat: '65% Avg. Savings',
       icon: DollarSign,
-      color: 'from-emerald-500 to-teal-600',
-      bgLight: 'bg-emerald-50 text-emerald-700 border-emerald-200',
+      color: 'from-sky-500 to-blue-600',
+      activeBorder: 'border-sky-500 ring-2 ring-sky-500/20 text-sky-600 bg-sky-50/70',
+      tagColor: 'bg-sky-100 text-sky-800 border-sky-200',
+      buttonBg: 'bg-sky-600 hover:bg-sky-700 text-white',
+    },
+    {
+      id: 'SELL',
+      title: 'SELL',
+      sub: 'Direct Peer Cash In Hand',
+      badge: 'Immediate Payout',
+      desc: 'List your past-semester books and project components in under 60 seconds. Negotiate in real time and get paid immediately upon safe QR handoff.',
+      stat: '\$42,000+ Reclaimed',
+      icon: TrendingUp,
+      color: 'from-amber-500 to-orange-600',
+      activeBorder: 'border-amber-500 ring-2 ring-amber-500/20 text-amber-600 bg-amber-50/70',
+      tagColor: 'bg-amber-100 text-amber-800 border-amber-200',
+      buttonBg: 'bg-amber-600 hover:bg-amber-700 text-white',
     },
     {
       id: 'BORROW',
-      title: 'Borrow & Lend',
-      badge: 'Micro-Rental',
-      desc: 'Short-term borrowing of scientific calculators, drafting kits, lab coats, and semester project components.',
-      stat: '4,200+ Days Loaned',
+      title: 'BORROW',
+      sub: 'Short-Term Micro Loans',
+      badge: 'Rent & Return',
+      desc: 'Borrow expensive TI-84 calculators, architectural drafting boards, and lab gear for an exam week or single semester without having to buy them outright.',
+      stat: '4,200+ Loan Days',
       icon: Layers,
-      color: 'from-blue-500 to-indigo-600',
-      bgLight: 'bg-blue-50 text-blue-700 border-blue-200',
+      color: 'from-purple-500 to-indigo-600',
+      activeBorder: 'border-purple-500 ring-2 ring-purple-500/20 text-purple-600 bg-purple-50/70',
+      tagColor: 'bg-purple-100 text-purple-800 border-purple-200',
+      buttonBg: 'bg-purple-600 hover:bg-purple-700 text-white',
     },
     {
       id: 'EXCHANGE',
-      title: 'Exchange & Swap',
+      title: 'EXCHANGE',
+      sub: 'Direct 1:1 Resource Swap',
       badge: 'Zero Cash Needed',
-      desc: 'Barter academic resources directly. Swap your semester 3 electronics kit for semester 4 thermodynamics textbooks.',
-      stat: 'Direct 1-to-1 Match',
-      icon: Repeat,
-      color: 'from-purple-500 to-pink-600',
-      bgLight: 'bg-purple-50 text-purple-700 border-purple-200',
+      desc: 'Barter academic essentials directly. Swap your semester 3 mechanical engineering kit for semester 4 thermodynamics and fluid mechanics texts.',
+      stat: '100% Cashless',
+      icon: ArrowLeftRight,
+      color: 'from-emerald-500 to-teal-600',
+      activeBorder: 'border-emerald-500 ring-2 ring-emerald-500/20 text-emerald-600 bg-emerald-50/70',
+      tagColor: 'bg-emerald-100 text-emerald-800 border-emerald-200',
+      buttonBg: 'bg-emerald-600 hover:bg-emerald-700 text-white',
     },
     {
       id: 'DONATE',
-      title: 'Donate & Gift',
-      badge: 'Pay It Forward',
-      desc: 'Graduating seniors donate reference notes and dorm gear directly to incoming freshmen and library book banks.',
-      stat: '100% Impact Driven',
-      icon: Leaf,
-      color: 'from-amber-500 to-orange-600',
-      bgLight: 'bg-amber-50 text-amber-700 border-amber-200',
-    },
-    {
-      id: 'DIGITAL',
-      title: 'Digital Courseware',
-      badge: 'Instant Delivery',
-      desc: 'Verified transfer of digital vouchers, course access keys, and lecture study material securely on campus.',
-      stat: 'Instant Verification',
-      icon: Sparkles,
-      color: 'from-cyan-500 to-blue-600',
-      bgLight: 'bg-cyan-50 text-cyan-700 border-cyan-200',
+      title: 'DONATE',
+      sub: 'Pay-It-Forward Impact',
+      badge: 'Community Gift',
+      desc: 'Graduating seniors and alumni gift reference textbooks, prep manuals, and dorm essentials directly to incoming freshmen and library book banks.',
+      stat: '1,420 kg CO₂ Saved',
+      icon: HeartHandshake,
+      color: 'from-pink-500 to-rose-600',
+      activeBorder: 'border-pink-500 ring-2 ring-pink-500/20 text-pink-600 bg-pink-50/70',
+      tagColor: 'bg-pink-100 text-pink-800 border-pink-200',
+      buttonBg: 'bg-pink-600 hover:bg-pink-700 text-white',
     },
   ];
 
@@ -85,97 +100,124 @@ export const LandingPage: React.FC = () => {
     {
       name: 'Indian Institute of Technology Bombay',
       code: 'IITB',
-      location: 'Mumbai, India',
-      students: '12,500+ Verified',
+      location: 'Powai, Mumbai',
+      students: '12,500+ Students',
       score: '88.5 Circularity',
-      hubs: 'Main Gate • Central Library • Hostel 12',
-      badge: 'Top Engineering Partner',
+      hubs: 'Main Gate Security • Central Library Lounge • Hostel 12',
+      badge: 'Premier Technology Hub',
+      badgeColor: 'bg-blue-50 text-blue-700 border-blue-200',
     },
     {
       name: 'Stanford University',
       code: 'STANFORD',
       location: 'California, USA',
-      students: '17,000+ Verified',
+      students: '17,000+ Students',
       score: '92.0 Circularity',
-      hubs: 'Engineering Quad • Green Library',
-      badge: 'Global Sustainability Hub',
+      hubs: 'Engineering Quad Bench A • Green Library Hub',
+      badge: 'Global Sustainability Leader',
+      badgeColor: 'bg-emerald-50 text-emerald-700 border-emerald-200',
     },
     {
       name: 'University of Delhi',
       code: 'DU',
       location: 'New Delhi, India',
-      students: '35,000+ Enrolled',
+      students: '35,000+ Students',
       score: '76.5 Circularity',
-      hubs: 'North Campus Hub • Arts Faculty',
+      hubs: 'North Campus Hub • Arts Faculty Concourse',
       badge: 'Metropolitan Network',
+      badgeColor: 'bg-purple-50 text-purple-700 border-purple-200',
     },
   ];
 
   const businessPillars = [
     {
-      title: 'Zero-Waste Campus Compliance (ESG & NAAC)',
-      desc: 'Institutions automatically track Scope 3 greenhouse gas avoidance and landfill tonnage diversion to satisfy green campus accreditations (NAAC, NIRF, AASHE STARS).',
+      title: 'Institutional ESG & Sustainability Audits',
+      desc: 'Universities receive automated Scope 3 carbon avoidance and landfill waste diversion metrics to satisfy green campus accreditations (NAAC, NIRF, AASHE STARS).',
       icon: Award,
+      color: 'text-emerald-600 bg-emerald-50 border-emerald-100',
     },
     {
-      title: 'Institutional Enterprise Subscriptions',
-      desc: 'Universities pay an annual SaaS licensing fee for custom perimeter geofencing, co-branded mobile apps, and dedicated campus pickup hub analytics.',
-      icon: Building2,
+      title: 'Verified Campus Trust Network',
+      desc: 'Exclusive geofenced perimeter. Only registered students with official .edu or institutional email IDs can browse, negotiate, and transact.',
+      icon: ShieldCheck,
+      color: 'text-sky-600 bg-sky-50 border-sky-100',
     },
     {
-      title: 'Student Financial Accessibility',
-      desc: 'Lowers the barrier to education by cutting textbook and equipment expenses by up to 70%, boosting retention for low-income and scholarship students.',
-      icon: TrendingUp,
-    },
-    {
-      title: 'Safe Physical QR Hub Lockers',
-      desc: 'Cryptographic HMAC QR handoffs stationed at campus security checkposts and libraries guarantee zero scamming and zero meetups with strangers off-campus.',
+      title: 'Cryptographic Safe Hub Handoffs',
+      desc: 'Physical exchange happens only at designated campus security gates or library hubs via cryptographic HMAC QR verification. Zero off-campus danger.',
       icon: QrCode,
+      color: 'text-purple-600 bg-purple-50 border-purple-100',
+    },
+    {
+      title: 'Enterprise Subscription & Monetization',
+      desc: 'Universities pay an annual SaaS subscription for institutional dashboards, custom locker pickup hub integration, and automated student safety controls.',
+      icon: Building2,
+      color: 'text-amber-600 bg-amber-50 border-amber-100',
     },
   ];
 
   return (
-    <div className="min-h-screen bg-slate-950 text-slate-100 selection:bg-primary-500 selection:text-slate-950 font-sans">
+    <div className="min-h-screen bg-slate-50 text-slate-900 selection:bg-emerald-500 selection:text-white font-sans">
       {/* Top Floating Announcement Bar */}
-      <div className="bg-gradient-to-r from-emerald-600 via-primary-600 to-teal-700 text-white text-xs font-semibold py-2 px-4 text-center flex items-center justify-center gap-2 shadow-inner">
-        <Sparkles className="w-3.5 h-3.5 animate-spin" style={{ animationDuration: '4s' }} />
-        <span>Enterprise Circular Economy Network: IIT Bombay, Stanford & Delhi University Now Live</span>
-        <span className="hidden md:inline-block bg-white/20 px-2 py-0.5 rounded-full text-[10px]">Cloud Run Active</span>
+      <div className="bg-slate-900 text-white text-xs font-semibold py-2.5 px-4 text-center flex items-center justify-center gap-2.5 border-b border-slate-800">
+        <span className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 text-[11px] font-bold border border-emerald-500/30">
+          <Sparkles className="w-3 h-3 text-emerald-400" />
+          <span>Official Circular Network</span>
+        </span>
+        <span className="text-slate-300">
+          Live across IIT Bombay, Stanford University & Delhi University
+        </span>
+        <span className="hidden md:inline-flex items-center gap-1 text-emerald-400 font-bold ml-1">
+          &bull; Cloud Run Active
+        </span>
       </div>
 
-      {/* Navigation Header */}
-      <header className="sticky top-0 z-50 backdrop-blur-md bg-slate-950/80 border-b border-slate-800/80">
+      {/* Main Navigation Header */}
+      <header className="sticky top-0 z-50 backdrop-blur-md bg-white/90 border-b border-slate-200/80 shadow-sm">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+          {/* Logo & Brand */}
           <div className="flex items-center gap-3">
-            <div className="w-11 h-11 rounded-2xl bg-gradient-to-tr from-primary-600 to-emerald-400 flex items-center justify-center text-white shadow-lg shadow-emerald-900/40 ring-2 ring-emerald-500/20">
-              <Repeat className="w-6 h-6 animate-pulse" />
-            </div>
+            <img
+              src="/logo.png"
+              alt="CampusLoop Logo"
+              className="w-12 h-12 rounded-2xl object-contain shadow-md bg-white p-0.5 ring-1 ring-slate-200"
+            />
             <div>
               <div className="flex items-center gap-2">
-                <span className="text-2xl font-black tracking-tight bg-gradient-to-r from-white via-slate-100 to-slate-300 bg-clip-text text-transparent">
-                  CampusLoop
+                <span className="text-2xl font-black tracking-tight text-slate-900">
+                  Campus<span className="text-emerald-600">Loop</span>
                 </span>
-                <span className="text-[10px] uppercase font-bold tracking-widest px-2 py-0.5 rounded bg-primary-500/10 text-primary-400 border border-primary-500/20">
-                  Circular Enterprise
+                <span className="text-[10px] uppercase font-bold tracking-widest px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200">
+                  Enterprise
                 </span>
               </div>
-              <p className="text-[11px] text-slate-400 hidden sm:block">Campus Resource-Sharing Platform</p>
+              <div className="text-[10px] font-bold tracking-wider flex items-center gap-1.5 text-slate-500 mt-0.5">
+                <span className="text-sky-600">BUY</span>
+                <span>&bull;</span>
+                <span className="text-amber-500">SELL</span>
+                <span>&bull;</span>
+                <span className="text-purple-600">BORROW</span>
+                <span>&bull;</span>
+                <span className="text-emerald-600">EXCHANGE</span>
+                <span>&bull;</span>
+                <span className="text-pink-600">DONATE</span>
+              </div>
             </div>
           </div>
 
-          {/* Nav Links */}
-          <nav className="hidden md:flex items-center gap-8 text-sm font-medium text-slate-300">
-            <a href="#circular-economy" className="hover:text-emerald-400 transition-colors">
-              How It Works
+          {/* Desktop Nav Links */}
+          <nav className="hidden lg:flex items-center gap-8 text-sm font-semibold text-slate-600">
+            <a href="#circular-actions" className="hover:text-emerald-600 transition-colors">
+              The 5 Actions
             </a>
-            <a href="#business-model" className="hover:text-emerald-400 transition-colors">
+            <a href="#business-model" className="hover:text-emerald-600 transition-colors">
               Institutional ESG
             </a>
-            <a href="#universities" className="hover:text-emerald-400 transition-colors">
+            <a href="#universities" className="hover:text-emerald-600 transition-colors">
               Campus Partners
             </a>
-            <a href="#architecture" className="hover:text-emerald-400 transition-colors">
-              Role Architecture
+            <a href="#roles" className="hover:text-emerald-600 transition-colors">
+              System Roles
             </a>
           </nav>
 
@@ -183,14 +225,14 @@ export const LandingPage: React.FC = () => {
           <div className="flex items-center gap-3">
             <Link
               to="/login"
-              className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-semibold text-slate-200 hover:text-white bg-slate-900 hover:bg-slate-800 border border-slate-700 transition-all shadow-sm"
+              className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-semibold text-slate-700 hover:text-slate-900 bg-white hover:bg-slate-100 border border-slate-300 transition-all shadow-sm"
             >
-              <Lock className="w-4 h-4 text-emerald-400" />
+              <Lock className="w-4 h-4 text-emerald-600" />
               <span>Admin Login</span>
             </Link>
             <Link
               to="/login"
-              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-semibold text-slate-950 bg-gradient-to-r from-emerald-400 to-teal-400 hover:from-emerald-300 hover:to-teal-300 shadow-lg shadow-emerald-500/20 hover:shadow-emerald-500/30 transition-all transform hover:-translate-y-0.5"
+              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-bold text-white bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 shadow-md shadow-emerald-600/20 hover:shadow-lg hover:shadow-emerald-600/30 transition-all transform hover:-translate-y-0.5"
             >
               <span>Launch Console</span>
               <ArrowRight className="w-4 h-4" />
@@ -200,88 +242,102 @@ export const LandingPage: React.FC = () => {
       </header>
 
       {/* Hero Section */}
-      <section className="relative pt-20 pb-28 px-4 sm:px-6 lg:px-8 overflow-hidden">
-        {/* Glow backdrop effects */}
-        <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[400px] bg-gradient-to-tr from-emerald-600/20 via-primary-500/15 to-transparent rounded-full blur-3xl pointer-events-none" />
-        <div className="absolute top-1/3 right-10 w-96 h-96 bg-teal-500/10 rounded-full blur-3xl pointer-events-none" />
+      <section className="relative pt-16 pb-24 px-4 sm:px-6 lg:px-8 overflow-hidden bg-gradient-to-b from-white via-emerald-50/30 to-slate-50">
+        {/* Soft background ambient gradients */}
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[450px] bg-gradient-to-tr from-emerald-200/30 via-teal-100/20 to-sky-100/30 rounded-full blur-3xl pointer-events-none" />
 
         <div className="max-w-6xl mx-auto text-center relative z-10">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-slate-900/90 border border-slate-800 text-xs font-semibold text-slate-300 mb-8 backdrop-blur shadow-sm">
-            <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping" />
-            <span className="text-emerald-400">Next-Gen Circular Economy:</span>
-            <span>Zero Waste &bull; Student Affordability &bull; Safe Handoffs</span>
+          {/* Main Logo Centerpiece */}
+          <div className="inline-flex flex-col items-center justify-center mb-8">
+            <div className="w-28 h-28 sm:w-36 sm:h-36 rounded-3xl bg-white p-2.5 shadow-xl shadow-slate-200/80 border border-slate-100 ring-4 ring-emerald-500/10 mb-4 transform hover:scale-105 transition-transform duration-300">
+              <img src="/logo.png" alt="CampusLoop Official Logo" className="w-full h-full object-contain" />
+            </div>
+
+            {/* Tagline Ribbon matching Logo */}
+            <div className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-white border border-slate-200 shadow-sm text-xs sm:text-sm font-extrabold tracking-wider">
+              <span className="text-sky-600">BUY</span>
+              <span className="text-emerald-500">&bull;</span>
+              <span className="text-amber-500">SELL</span>
+              <span className="text-emerald-500">&bull;</span>
+              <span className="text-purple-600">BORROW</span>
+              <span className="text-emerald-500">&bull;</span>
+              <span className="text-emerald-600">EXCHANGE</span>
+              <span className="text-emerald-500">&bull;</span>
+              <span className="text-pink-600">DONATE</span>
+            </div>
           </div>
 
-          <h1 className="text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight leading-[1.1] mb-8">
-            The Circular Resource Sharing Network for{' '}
-            <span className="bg-gradient-to-r from-emerald-400 via-teal-300 to-cyan-400 bg-clip-text text-transparent">
-              College Campuses.
+          <h1 className="text-4xl sm:text-6xl lg:text-7xl font-black tracking-tight text-slate-900 leading-[1.15] mb-6">
+            Circular Resource Sharing for{' '}
+            <span className="bg-gradient-to-r from-emerald-600 via-teal-600 to-sky-600 bg-clip-text text-transparent">
+              College Students.
             </span>
           </h1>
 
-          <p className="max-w-3xl mx-auto text-lg sm:text-xl text-slate-400 mb-10 leading-relaxed font-normal">
-            CampusLoop connects verified college students inside their university ecosystem to{' '}
-            <strong className="text-white font-semibold">Buy, Sell, Borrow, Exchange & Donate</strong> textbooks, lab equipment, and tech gear with zero risk, cryptographic QR verification, and automated ESG carbon savings.
+          <p className="max-w-3xl mx-auto text-lg sm:text-xl text-slate-600 mb-10 leading-relaxed font-normal">
+            The safe, verified peer-to-peer campus platform connecting university students to share textbooks, lab kits, calculators, and electronics — eliminating financial strain and diverting tons of landfill waste.
           </p>
 
+          {/* Action CTAs */}
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 max-w-md mx-auto mb-16">
             <Link
               to="/login"
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl text-base font-bold text-slate-950 bg-gradient-to-r from-emerald-400 to-teal-400 hover:from-emerald-300 hover:to-teal-300 shadow-xl shadow-emerald-500/25 transition-all transform hover:-translate-y-0.5"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-8 py-4 rounded-2xl text-base font-bold text-white bg-slate-900 hover:bg-slate-800 shadow-xl shadow-slate-900/20 transition-all transform hover:-translate-y-0.5"
             >
-              <Building2 className="w-5 h-5 text-slate-950" />
-              <span>Admin Dashboard</span>
+              <Building2 className="w-5 h-5 text-emerald-400" />
+              <span>Enter Admin Console</span>
               <ChevronRight className="w-4 h-4" />
             </Link>
 
             <a
-              href="#circular-economy"
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-4 rounded-xl text-base font-semibold text-slate-300 hover:text-white bg-slate-900/80 hover:bg-slate-800/80 border border-slate-800 transition-all backdrop-blur"
+              href="#circular-actions"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-4 rounded-2xl text-base font-semibold text-slate-700 hover:text-slate-900 bg-white hover:bg-slate-50 border border-slate-300 transition-all shadow-sm"
             >
-              <Leaf className="w-5 h-5 text-emerald-400" />
-              <span>Explore The Platform</span>
+              <Repeat className="w-5 h-5 text-emerald-600" />
+              <span>Explore The 5 Actions</span>
             </a>
           </div>
 
-          {/* Quick Stats Strip */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto p-6 rounded-2xl bg-slate-900/60 border border-slate-800/80 backdrop-blur-md shadow-2xl">
-            <div className="p-4 border-r border-slate-800 last:border-r-0">
-              <div className="text-3xl font-black text-white mb-1">3 Top Tier</div>
-              <div className="text-xs text-slate-400 font-medium">Universities Live</div>
+          {/* Live Verified Campus Stats Strip */}
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto p-6 rounded-3xl bg-white border border-slate-200 shadow-xl shadow-slate-200/60">
+            <div className="p-4 border-r border-slate-100 last:border-r-0 text-center">
+              <div className="text-3xl font-black text-slate-900 mb-1">3 Live</div>
+              <div className="text-xs text-slate-500 font-semibold uppercase tracking-wider">Top Universities</div>
             </div>
-            <div className="p-4 border-r border-slate-800 last:border-r-0">
-              <div className="text-3xl font-black text-emerald-400 mb-1">1,420+ kg</div>
-              <div className="text-xs text-slate-400 font-medium">CO₂ Diverted</div>
+            <div className="p-4 border-r border-slate-100 last:border-r-0 text-center">
+              <div className="text-3xl font-black text-emerald-600 mb-1">1,420+ kg</div>
+              <div className="text-xs text-slate-500 font-semibold uppercase tracking-wider">CO₂ Diverted</div>
             </div>
-            <div className="p-4 border-r border-slate-800 last:border-r-0">
-              <div className="text-3xl font-black text-teal-400 mb-1">94.8%</div>
-              <div className="text-xs text-slate-400 font-medium">Hub Pick-up Rate</div>
+            <div className="p-4 border-r border-slate-100 last:border-r-0 text-center">
+              <div className="text-3xl font-black text-sky-600 mb-1">94.8%</div>
+              <div className="text-xs text-slate-500 font-semibold uppercase tracking-wider">Hub Handoffs</div>
             </div>
-            <div className="p-4">
-              <div className="text-3xl font-black text-cyan-400 mb-1">\$42,000+</div>
-              <div className="text-xs text-slate-400 font-medium">Student Cash Saved</div>
+            <div className="p-4 text-center">
+              <div className="text-3xl font-black text-purple-600 mb-1">\$42,000+</div>
+              <div className="text-xs text-slate-500 font-semibold uppercase tracking-wider">Student Savings</div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* The 5 Core Circular Actions Section */}
-      <section id="circular-economy" className="py-24 bg-slate-900/40 border-y border-slate-800/80 relative">
+      {/* The 5 Core Actions Section */}
+      <section id="circular-actions" className="py-24 bg-white border-y border-slate-200/80">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto mb-16">
-            <h2 className="text-xs font-bold uppercase tracking-widest text-emerald-400 mb-3">
-              One Unified Circular Ecosystem
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-50 border border-emerald-200 text-xs font-bold text-emerald-800 uppercase tracking-wider mb-4">
+              <Leaf className="w-3.5 h-3.5 text-emerald-600" />
+              <span>Circular Economy Engine</span>
+            </div>
+            <h2 className="text-3xl sm:text-5xl font-black text-slate-900 tracking-tight mb-4">
+              The Five Ways Campus Resources Circulate
             </h2>
-            <h3 className="text-3xl sm:text-4xl font-extrabold text-white mb-4">
-              Five Ways Students Keep Resources Circulating
-            </h3>
-            <p className="text-slate-400 text-base">
-              Say goodbye to expensive university bookstores, Craigslist scams, and discarded semester notes.
+            <p className="text-slate-600 text-base sm:text-lg">
+              Every action in CampusLoop prevents resource waste, reduces student expenses, and verifies physical safety inside campus security checkposts.
             </p>
           </div>
 
-          {/* Action Selector Buttons */}
-          <div className="flex flex-wrap items-center justify-center gap-2 mb-12">
+          {/* Action Tabs Bar */}
+          <div className="grid grid-cols-2 sm:grid-cols-5 gap-3 max-w-4xl mx-auto mb-12">
             {circularActions.map((action) => {
               const Icon = action.icon;
               const isActive = activeTab === action.id;
@@ -289,20 +345,21 @@ export const LandingPage: React.FC = () => {
                 <button
                   key={action.id}
                   onClick={() => setActiveTab(action.id as any)}
-                  className={`flex items-center gap-2.5 px-5 py-3 rounded-xl text-sm font-semibold transition-all ${
+                  className={`p-4 rounded-2xl border text-center transition-all flex flex-col items-center justify-center ${
                     isActive
-                      ? 'bg-gradient-to-r from-emerald-500 to-teal-600 text-white shadow-lg shadow-emerald-900/40 scale-105'
-                      : 'bg-slate-900/80 text-slate-400 hover:text-slate-200 border border-slate-800 hover:border-slate-700'
+                      ? action.activeBorder
+                      : 'bg-white border-slate-200 text-slate-600 hover:border-slate-300 hover:bg-slate-50'
                   }`}
                 >
-                  <Icon className="w-4 h-4" />
-                  <span>{action.title}</span>
+                  <Icon className="w-6 h-6 mb-2" />
+                  <div className="text-sm font-black tracking-wide">{action.title}</div>
+                  <div className="text-[10px] text-slate-500 font-medium hidden sm:block mt-0.5">{action.sub}</div>
                 </button>
               );
             })}
           </div>
 
-          {/* Active Card Showcase */}
+          {/* Active Action Feature Card */}
           {circularActions
             .filter((a) => a.id === activeTab)
             .map((action) => {
@@ -310,63 +367,62 @@ export const LandingPage: React.FC = () => {
               return (
                 <div
                   key={action.id}
-                  className="max-w-4xl mx-auto p-8 sm:p-12 rounded-3xl bg-gradient-to-br from-slate-900 via-slate-900/90 to-slate-800/40 border border-slate-800 shadow-2xl relative overflow-hidden"
+                  className="max-w-4xl mx-auto p-8 sm:p-12 rounded-3xl bg-slate-900 text-white shadow-2xl relative overflow-hidden"
                 >
-                  <div className="absolute -right-16 -top-16 w-64 h-64 bg-emerald-500/10 rounded-full blur-3xl pointer-events-none" />
+                  <div className="absolute top-0 right-0 w-96 h-96 bg-gradient-to-br from-emerald-500/20 via-teal-500/10 to-transparent rounded-full blur-3xl pointer-events-none" />
 
-                  <div className="grid md:grid-cols-2 gap-8 items-center">
+                  <div className="grid md:grid-cols-2 gap-8 items-center relative z-10">
                     <div>
-                      <div className="inline-block px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 mb-4">
+                      <div className="inline-block px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 mb-4">
                         {action.badge}
                       </div>
-                      <h4 className="text-3xl font-extrabold text-white mb-4">{action.title}</h4>
+                      <h3 className="text-3xl font-extrabold mb-3">Action: {action.title}</h3>
                       <p className="text-slate-300 text-base leading-relaxed mb-6">{action.desc}</p>
 
-                      <div className="flex items-center gap-4 pt-4 border-t border-slate-800">
+                      <div className="pt-4 border-t border-slate-800 flex items-center justify-between">
                         <div>
                           <div className="text-2xl font-black text-emerald-400">{action.stat}</div>
-                          <div className="text-xs text-slate-500 font-medium">Verified Platform Impact</div>
+                          <div className="text-xs text-slate-400 font-medium">Verified Campus Metric</div>
                         </div>
-                        <div className="ml-auto">
-                          <Link
-                            to="/login"
-                            className="inline-flex items-center gap-2 text-sm font-semibold text-emerald-400 hover:text-emerald-300"
-                          >
-                            <span>Inspect Marketplace</span>
-                            <ChevronRight className="w-4 h-4" />
-                          </Link>
-                        </div>
+                        <Link
+                          to="/login"
+                          className={`inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-bold shadow-md transition-all ${action.buttonBg}`}
+                        >
+                          <span>Explore in Console</span>
+                          <ChevronRight className="w-4 h-4" />
+                        </Link>
                       </div>
                     </div>
 
-                    <div className="bg-slate-950/80 p-6 rounded-2xl border border-slate-800 flex flex-col justify-center space-y-4">
-                      <div className="flex items-center gap-3">
-                        <div className="w-10 h-10 rounded-xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center">
+                    {/* Right Infographic Card */}
+                    <div className="p-6 rounded-2xl bg-slate-800/80 border border-slate-700/80 space-y-4 text-sm">
+                      <div className="flex items-start gap-3.5">
+                        <div className="w-10 h-10 rounded-xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center shrink-0">
                           <ShieldCheck className="w-5 h-5" />
                         </div>
                         <div>
-                          <div className="text-sm font-bold text-white">Trust & Verification</div>
-                          <div className="text-xs text-slate-400">Institutional campus email authentication required</div>
+                          <div className="font-bold text-white">Student ID Verification</div>
+                          <div className="text-xs text-slate-300 mt-0.5">Institutions verify each member via official campus email or uploaded student ID card.</div>
                         </div>
                       </div>
 
-                      <div className="flex items-center gap-3">
-                        <div className="w-10 h-10 rounded-xl bg-teal-500/10 text-teal-400 flex items-center justify-center">
+                      <div className="flex items-start gap-3.5">
+                        <div className="w-10 h-10 rounded-xl bg-sky-500/20 text-sky-400 flex items-center justify-center shrink-0">
                           <QrCode className="w-5 h-5" />
                         </div>
                         <div>
-                          <div className="text-sm font-bold text-white">Safe Hub Hand-off</div>
-                          <div className="text-xs text-slate-400">Official pickup points inside campus security gates</div>
+                          <div className="font-bold text-white">Cryptographic QR Verification</div>
+                          <div className="text-xs text-slate-300 mt-0.5">Physical exchanges require HMAC QR confirmation between buyer and seller at official hubs.</div>
                         </div>
                       </div>
 
-                      <div className="flex items-center gap-3">
-                        <div className="w-10 h-10 rounded-xl bg-cyan-500/10 text-cyan-400 flex items-center justify-center">
+                      <div className="flex items-start gap-3.5">
+                        <div className="w-10 h-10 rounded-xl bg-purple-500/20 text-purple-400 flex items-center justify-center shrink-0">
                           <Leaf className="w-5 h-5" />
                         </div>
                         <div>
-                          <div className="text-sm font-bold text-white">LCA Impact Calculator</div>
-                          <div className="text-xs text-slate-400">Automated CO₂ and landfill diversion tracking</div>
+                          <div className="font-bold text-white">Direct LCA Impact Logging</div>
+                          <div className="text-xs text-slate-300 mt-0.5">Avoided production emissions are logged and attributed to the college ESG dashboard.</div>
                         </div>
                       </div>
                     </div>
@@ -377,17 +433,18 @@ export const LandingPage: React.FC = () => {
         </div>
       </section>
 
-      {/* Institutional Business Model & ESG Compliance */}
+      {/* Business Model & Institutional ESG Section */}
       <section id="business-model" className="py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <h2 className="text-xs font-bold uppercase tracking-widest text-emerald-400 mb-3">
-            Business Model & Enterprise Value
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-slate-100 border border-slate-200 text-xs font-bold text-slate-800 uppercase tracking-wider mb-4">
+            <Building2 className="w-3.5 h-3.5 text-emerald-600" />
+            <span>Institutional Partnership</span>
+          </div>
+          <h2 className="text-3xl sm:text-5xl font-black text-slate-900 tracking-tight mb-4">
+            Built for Campus Sustainability & Governance
           </h2>
-          <h3 className="text-3xl sm:text-4xl font-extrabold text-white mb-4">
-            Why Universities Partner with CampusLoop
-          </h3>
-          <p className="text-slate-400 text-base">
-            CampusLoop isn't just a classifieds board; it's enterprise circularity infrastructure built for university sustainability officers, provosts, and campus safety.
+          <p className="text-slate-600 text-base sm:text-lg">
+            CampusLoop provides institutions with real infrastructure to eliminate waste, improve student affordability, and meet zero-waste campus mandates.
           </p>
         </div>
 
@@ -397,14 +454,14 @@ export const LandingPage: React.FC = () => {
             return (
               <div
                 key={idx}
-                className="p-6 rounded-2xl bg-slate-900/60 border border-slate-800 hover:border-slate-700 transition-all flex flex-col justify-between group"
+                className="p-7 rounded-3xl bg-white border border-slate-200/90 shadow-sm hover:shadow-xl transition-all flex flex-col justify-between group hover:-translate-y-1 duration-300"
               >
                 <div>
-                  <div className="w-12 h-12 rounded-xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center mb-5 group-hover:scale-110 transition-transform">
+                  <div className={`w-12 h-12 rounded-2xl flex items-center justify-center mb-6 border ${pillar.color}`}>
                     <Icon className="w-6 h-6" />
                   </div>
-                  <h4 className="text-lg font-bold text-white mb-3">{pillar.title}</h4>
-                  <p className="text-sm text-slate-400 leading-relaxed">{pillar.desc}</p>
+                  <h3 className="text-lg font-black text-slate-900 mb-3">{pillar.title}</h3>
+                  <p className="text-sm text-slate-600 leading-relaxed">{pillar.desc}</p>
                 </div>
               </div>
             );
@@ -413,19 +470,19 @@ export const LandingPage: React.FC = () => {
       </section>
 
       {/* Participating Colleges Showcase */}
-      <section id="universities" className="py-24 bg-slate-900/30 border-t border-slate-800">
+      <section id="universities" className="py-24 bg-slate-100/70 border-y border-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row md:items-end justify-between mb-16">
             <div>
-              <h2 className="text-xs font-bold uppercase tracking-widest text-emerald-400 mb-3">
-                Live Ecosystem
+              <div className="text-xs font-bold uppercase tracking-widest text-emerald-700 mb-3">
+                Live Geofenced Campuses
+              </div>
+              <h2 className="text-3xl sm:text-4xl font-black text-slate-900 tracking-tight">
+                Participating Universities
               </h2>
-              <h3 className="text-3xl sm:text-4xl font-extrabold text-white">
-                Participating Campus Partners
-              </h3>
             </div>
-            <p className="text-slate-400 text-sm max-w-md mt-4 md:mt-0">
-              Each university operates an isolated, geofenced micro-economy where only registered institutional members can interact.
+            <p className="text-slate-600 text-sm max-w-md mt-4 md:mt-0">
+              Each university operates an isolated, geofenced circular economy where only verified institutional students can participate.
             </p>
           </div>
 
@@ -433,45 +490,45 @@ export const LandingPage: React.FC = () => {
             {colleges.map((col, idx) => (
               <div
                 key={idx}
-                className="p-7 rounded-2xl bg-slate-900/80 border border-slate-800 hover:border-emerald-500/40 transition-all flex flex-col justify-between relative overflow-hidden group"
+                className="p-8 rounded-3xl bg-white border border-slate-200/80 shadow-md hover:shadow-xl transition-all flex flex-col justify-between relative overflow-hidden group"
               >
-                <div className="absolute top-0 right-0 w-28 h-28 bg-emerald-500/5 rounded-full blur-xl pointer-events-none" />
-
                 <div>
                   <div className="flex items-center justify-between mb-4">
-                    <span className="text-xs font-bold px-2.5 py-1 rounded-md bg-slate-800 text-slate-300">
+                    <span className="text-xs font-bold px-3 py-1 rounded-lg bg-slate-900 text-white">
                       {col.code}
                     </span>
-                    <span className="text-[11px] font-semibold text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded-full border border-emerald-500/20">
+                    <span className={`text-[11px] font-bold px-2.5 py-1 rounded-full border ${col.badgeColor}`}>
                       {col.badge}
                     </span>
                   </div>
 
-                  <h4 className="text-xl font-bold text-white mb-2 group-hover:text-emerald-300 transition-colors">
+                  <h3 className="text-xl font-bold text-slate-900 mb-1 group-hover:text-emerald-700 transition-colors">
                     {col.name}
-                  </h4>
-                  <p className="text-xs text-slate-400 mb-4">{col.location}</p>
+                  </h3>
+                  <p className="text-xs text-slate-500 mb-6">{col.location}</p>
 
-                  <div className="space-y-2 py-3 border-t border-slate-800/80 text-xs">
-                    <div className="flex justify-between text-slate-400">
-                      <span>Community:</span>
-                      <span className="font-semibold text-white">{col.students}</span>
+                  <div className="space-y-3 py-4 border-t border-slate-100 text-xs">
+                    <div className="flex justify-between">
+                      <span className="text-slate-500">Student Community:</span>
+                      <span className="font-bold text-slate-900">{col.students}</span>
                     </div>
-                    <div className="flex justify-between text-slate-400">
-                      <span>ESG Score:</span>
-                      <span className="font-semibold text-emerald-400">{col.score}</span>
+                    <div className="flex justify-between">
+                      <span className="text-slate-500">Circularity Index:</span>
+                      <span className="font-bold text-emerald-600">{col.score}</span>
                     </div>
-                    <div className="flex justify-between text-slate-400">
-                      <span>Official Hubs:</span>
-                      <span className="font-medium text-slate-300">{col.hubs}</span>
+                    <div className="pt-2">
+                      <span className="text-slate-500 block mb-1">Official Safe Hubs:</span>
+                      <span className="font-semibold text-slate-800 bg-slate-50 p-2 rounded-lg block border border-slate-100">
+                        {col.hubs}
+                      </span>
                     </div>
                   </div>
                 </div>
 
-                <div className="pt-4 border-t border-slate-800/80">
+                <div className="pt-6 border-t border-slate-100 mt-6">
                   <Link
                     to="/login"
-                    className="w-full inline-flex items-center justify-center gap-2 py-2.5 rounded-xl text-xs font-semibold bg-slate-800 hover:bg-slate-700 text-slate-200 transition-colors"
+                    className="w-full inline-flex items-center justify-center gap-2 py-3 rounded-xl text-xs font-bold bg-slate-900 hover:bg-slate-800 text-white transition-colors"
                   >
                     <span>Inspect Campus Panel</span>
                     <ArrowRight className="w-3.5 h-3.5" />
@@ -483,100 +540,101 @@ export const LandingPage: React.FC = () => {
         </div>
       </section>
 
-      {/* Role-Based System Architecture */}
-      <section id="architecture" className="py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* Role-Based Architecture */}
+      <section id="roles" className="py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <h2 className="text-xs font-bold uppercase tracking-widest text-emerald-400 mb-3">
-            System Architecture
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-slate-100 border border-slate-200 text-xs font-bold text-slate-800 uppercase tracking-wider mb-4">
+            <Layers className="w-3.5 h-3.5 text-emerald-600" />
+            <span>Architecture & Roles</span>
+          </div>
+          <h2 className="text-3xl sm:text-5xl font-black text-slate-900 tracking-tight mb-4">
+            Three Distinct Roles. One Database.
           </h2>
-          <h3 className="text-3xl sm:text-4xl font-extrabold text-white mb-4">
-            Built for Three Key Roles
-          </h3>
-          <p className="text-slate-400 text-base">
-            CampusLoop provides distinct, tailored interfaces powered by a single high-performance REST backend and PostgreSQL database.
+          <p className="text-slate-600 text-base sm:text-lg">
+            Powered by a single Node.js REST backend, PostgreSQL relational database, and strict college-level access control.
           </p>
         </div>
 
         <div className="grid md:grid-cols-3 gap-8">
           {/* Role 1: Student */}
-          <div className="p-8 rounded-3xl bg-slate-900/60 border border-slate-800 flex flex-col justify-between">
+          <div className="p-8 rounded-3xl bg-white border border-slate-200 shadow-md hover:shadow-xl transition-all flex flex-col justify-between">
             <div>
-              <div className="w-12 h-12 rounded-2xl bg-cyan-500/10 text-cyan-400 flex items-center justify-center mb-6">
+              <div className="w-12 h-12 rounded-2xl bg-sky-50 text-sky-600 flex items-center justify-center mb-6 border border-sky-100">
                 <Smartphone className="w-6 h-6" />
               </div>
-              <div className="text-xs font-bold uppercase tracking-widest text-cyan-400 mb-2">Role 1: Student</div>
-              <h4 className="text-2xl font-bold text-white mb-3">Flutter Mobile App</h4>
-              <p className="text-sm text-slate-400 leading-relaxed mb-6">
-                Students search categories, negotiate prices via live counteroffers, message peer students, and conduct QR verification at campus security desks.
+              <div className="text-xs font-extrabold uppercase tracking-widest text-sky-600 mb-1">Role 1: Student</div>
+              <h3 className="text-2xl font-black text-slate-900 mb-3">Flutter Mobile App</h3>
+              <p className="text-sm text-slate-600 leading-relaxed mb-6">
+                Students browse verified listings, make counter-offers in the interactive bargaining engine, chat with peer students, and execute QR handoffs.
               </p>
-              <ul className="space-y-2.5 text-xs text-slate-300">
+              <ul className="space-y-2.5 text-xs font-medium text-slate-700">
                 <li className="flex items-center gap-2">
-                  <CheckCircle2 className="w-4 h-4 text-cyan-400" />
-                  <span>Interactive Bargaining Engine</span>
+                  <CheckCircle2 className="w-4 h-4 text-sky-600" />
+                  <span>Real-time Bargaining Engine</span>
                 </li>
                 <li className="flex items-center gap-2">
-                  <CheckCircle2 className="w-4 h-4 text-cyan-400" />
-                  <span>Encrypted QR Handoff Verification</span>
+                  <CheckCircle2 className="w-4 h-4 text-sky-600" />
+                  <span>Cryptographic QR Verification</span>
                 </li>
                 <li className="flex items-center gap-2">
-                  <CheckCircle2 className="w-4 h-4 text-cyan-400" />
-                  <span>Personal LCA CO₂ Savings Tracker</span>
+                  <CheckCircle2 className="w-4 h-4 text-sky-600" />
+                  <span>Student Eco-Impact Badges</span>
                 </li>
               </ul>
             </div>
           </div>
 
           {/* Role 2: College Admin */}
-          <div className="p-8 rounded-3xl bg-slate-900/60 border border-slate-800 flex flex-col justify-between">
+          <div className="p-8 rounded-3xl bg-white border border-slate-200 shadow-md hover:shadow-xl transition-all flex flex-col justify-between">
             <div>
-              <div className="w-12 h-12 rounded-2xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center mb-6">
+              <div className="w-12 h-12 rounded-2xl bg-emerald-50 text-emerald-600 flex items-center justify-center mb-6 border border-emerald-100">
                 <Building2 className="w-6 h-6" />
               </div>
-              <div className="text-xs font-bold uppercase tracking-widest text-emerald-400 mb-2">Role 2: College Admin</div>
-              <h4 className="text-2xl font-bold text-white mb-3">Campus Operations Panel</h4>
-              <p className="text-sm text-slate-400 leading-relaxed mb-6">
-                Designated campus officials review student ID verification submissions, resolve peer trade disputes, broadcast campus alerts, and manage pickup locations.
+              <div className="text-xs font-extrabold uppercase tracking-widest text-emerald-600 mb-1">Role 2: College Admin</div>
+              <h3 className="text-2xl font-black text-slate-900 mb-3">Campus Admin Panel</h3>
+              <p className="text-sm text-slate-600 leading-relaxed mb-6">
+                College staff verify student ID submissions, mediate trade disputes, issue disciplinary strikes, and manage campus safe pickup hubs.
               </p>
-              <ul className="space-y-2.5 text-xs text-slate-300">
+              <ul className="space-y-2.5 text-xs font-medium text-slate-700">
                 <li className="flex items-center gap-2">
-                  <CheckCircle2 className="w-4 h-4 text-emerald-400" />
+                  <CheckCircle2 className="w-4 h-4 text-emerald-600" />
                   <span>Strict College Data Isolation</span>
                 </li>
                 <li className="flex items-center gap-2">
-                  <CheckCircle2 className="w-4 h-4 text-emerald-400" />
-                  <span>Student ID & Disciplinary Controls</span>
+                  <CheckCircle2 className="w-4 h-4 text-emerald-600" />
+                  <span>Student ID Verification Queue</span>
                 </li>
                 <li className="flex items-center gap-2">
-                  <CheckCircle2 className="w-4 h-4 text-emerald-400" />
-                  <span>Campus Safe Hub Station Setup</span>
+                  <CheckCircle2 className="w-4 h-4 text-emerald-600" />
+                  <span>Physical Pickup Station Controls</span>
                 </li>
               </ul>
             </div>
           </div>
 
           {/* Role 3: Super Admin */}
-          <div className="p-8 rounded-3xl bg-slate-900/60 border border-slate-800 flex flex-col justify-between">
+          <div className="p-8 rounded-3xl bg-white border border-slate-200 shadow-md hover:shadow-xl transition-all flex flex-col justify-between">
             <div>
-              <div className="w-12 h-12 rounded-2xl bg-purple-500/10 text-purple-400 flex items-center justify-center mb-6">
+              <div className="w-12 h-12 rounded-2xl bg-purple-50 text-purple-600 flex items-center justify-center mb-6 border border-purple-100">
                 <ShieldCheck className="w-6 h-6" />
               </div>
-              <div className="text-xs font-bold uppercase tracking-widest text-purple-400 mb-2">Role 3: Super Admin</div>
-              <h4 className="text-2xl font-bold text-white mb-3">Global Institutional Suite</h4>
-              <p className="text-sm text-slate-400 leading-relaxed mb-6">
-                Network administrators onboard new colleges, assign institutional administrators, track subscription plans and revenue, and audit immutable security logs.
+              <div className="text-xs font-extrabold uppercase tracking-widest text-purple-600 mb-1">Role 3: Super Admin</div>
+              <h3 className="text-2xl font-black text-slate-900 mb-3">Global Platform Suite</h3>
+              <p className="text-sm text-slate-600 leading-relaxed mb-6">
+                Platform leaders onboard universities, assign college admins, manage enterprise subscription invoicing, and monitor immutable security audit logs.
               </p>
-              <ul className="space-y-2.5 text-xs text-slate-300">
+              <ul className="space-y-2.5 text-xs font-medium text-slate-700">
                 <li className="flex items-center gap-2">
-                  <CheckCircle2 className="w-4 h-4 text-purple-400" />
+                  <CheckCircle2 className="w-4 h-4 text-purple-600" />
                   <span>Multi-College Governance</span>
                 </li>
                 <li className="flex items-center gap-2">
-                  <CheckCircle2 className="w-4 h-4 text-purple-400" />
-                  <span>Revenue & Subscription Invoicing</span>
+                  <CheckCircle2 className="w-4 h-4 text-purple-600" />
+                  <span>Subscription & Revenue Analytics</span>
                 </li>
                 <li className="flex items-center gap-2">
-                  <CheckCircle2 className="w-4 h-4 text-purple-400" />
-                  <span>Comprehensive Security Audit Trails</span>
+                  <CheckCircle2 className="w-4 h-4 text-purple-600" />
+                  <span>Security & Audit Trails</span>
                 </li>
               </ul>
             </div>
@@ -584,17 +642,16 @@ export const LandingPage: React.FC = () => {
         </div>
       </section>
 
-      {/* Institutional Call To Action Banner */}
+      {/* Call To Action Banner */}
       <section className="py-20 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-5xl mx-auto rounded-3xl p-10 sm:p-14 bg-gradient-to-r from-emerald-950 via-slate-900 to-teal-950 border border-emerald-500/30 text-center relative overflow-hidden shadow-2xl">
-          <div className="absolute top-0 right-0 w-80 h-80 bg-emerald-500/15 rounded-full blur-3xl pointer-events-none" />
-
+        <div className="max-w-5xl mx-auto rounded-3xl p-10 sm:p-14 bg-gradient-to-br from-slate-900 via-slate-900 to-emerald-950 text-white text-center relative overflow-hidden shadow-2xl">
           <div className="relative z-10">
-            <h3 className="text-3xl sm:text-5xl font-extrabold text-white mb-6 tracking-tight">
-              Ready to bring Circular Economy to your University?
-            </h3>
+            <img src="/logo.png" alt="Logo" className="w-16 h-16 rounded-2xl mx-auto mb-6 bg-white p-1 shadow-lg" />
+            <h2 className="text-3xl sm:text-5xl font-black mb-6 tracking-tight">
+              Bring CampusLoop to Your University
+            </h2>
             <p className="max-w-2xl mx-auto text-slate-300 text-base sm:text-lg mb-8 leading-relaxed">
-              Join leading academic institutions driving zero waste, verified campus trust, and student financial resilience.
+              Join leading academic institutions creating sustainable, zero-waste campuses and saving students thousands every academic year.
             </p>
 
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
@@ -610,35 +667,35 @@ export const LandingPage: React.FC = () => {
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="border-t border-slate-900 bg-slate-950 py-12 px-4 sm:px-6 lg:px-8 text-xs text-slate-500">
+      {/* Global Footer */}
+      <footer className="border-t border-slate-200 bg-white py-12 px-4 sm:px-6 lg:px-8 text-xs text-slate-500">
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
           <div className="flex items-center gap-3">
-            <div className="w-8 h-8 rounded-lg bg-emerald-500/10 text-emerald-400 flex items-center justify-center">
-              <Repeat className="w-4 h-4" />
-            </div>
+            <img src="/logo.png" alt="CampusLoop" className="w-8 h-8 rounded-lg object-contain bg-white p-0.5 ring-1 ring-slate-200" />
             <div>
-              <span className="text-slate-300 font-bold text-sm">CampusLoop Enterprise</span>
-              <p className="text-[11px] text-slate-600">Circular Resource-Sharing Network for Higher Education</p>
+              <div className="text-slate-900 font-bold text-sm">
+                Campus<span className="text-emerald-600">Loop</span>
+              </div>
+              <p className="text-[11px] text-slate-500">The Circular Resource Sharing Platform for Higher Education</p>
             </div>
           </div>
 
-          <div className="flex items-center gap-6 text-slate-400">
-            <a href="#circular-economy" className="hover:text-white transition-colors">
-              Platform
+          <div className="flex items-center gap-6 text-slate-600 font-semibold">
+            <a href="#circular-actions" className="hover:text-emerald-600 transition-colors">
+              The 5 Actions
             </a>
-            <a href="#business-model" className="hover:text-white transition-colors">
-              ESG & Accreditations
+            <a href="#business-model" className="hover:text-emerald-600 transition-colors">
+              ESG Audits
             </a>
-            <a href="#universities" className="hover:text-white transition-colors">
-              Colleges
+            <a href="#universities" className="hover:text-emerald-600 transition-colors">
+              Universities
             </a>
-            <Link to="/login" className="hover:text-white transition-colors">
+            <Link to="/login" className="hover:text-emerald-600 transition-colors">
               Admin Login
             </Link>
           </div>
 
-          <div className="text-center md:text-right text-slate-600">
+          <div className="text-center md:text-right text-slate-500">
             &copy; {new Date().getFullYear()} CampusLoop Inc. All rights reserved. &bull; Deployed on Google Cloud Run
           </div>
         </div>

@@ -85,15 +85,29 @@ export const LoginPage: React.FC = () => {
         <div className="absolute -bottom-24 -right-24 w-96 h-96 bg-emerald-500/10 rounded-full blur-3xl pointer-events-none" />
 
         {/* Top Logo */}
-        <div className="relative z-10 flex items-center gap-3">
-          <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-primary-600 to-emerald-400 flex items-center justify-center text-white shadow-lg shadow-emerald-900/40">
-            <Repeat className="w-6 h-6" />
-          </div>
+        <div className="relative z-10 flex items-center gap-3.5">
+          <img src="/logo.png" alt="CampusLoop" className="w-12 h-12 rounded-2xl object-contain bg-white p-1 shadow-lg shadow-emerald-950" />
           <div>
-            <span className="text-xl font-bold tracking-tight">CampusLoop</span>
-            <span className="ml-2 text-xs font-semibold bg-emerald-500/20 text-emerald-400 px-2 py-0.5 rounded border border-emerald-500/30">
-              ADMIN PANEL
-            </span>
+            <div className="flex items-center gap-2">
+              <span className="text-2xl font-black tracking-tight">
+                <span className="text-white">Campus</span>
+                <span className="text-emerald-400">Loop</span>
+              </span>
+              <span className="text-[10px] uppercase font-bold tracking-widest bg-emerald-500/20 text-emerald-400 px-2 py-0.5 rounded border border-emerald-500/30">
+                ADMIN
+              </span>
+            </div>
+            <p className="text-[10px] font-bold tracking-wider flex items-center gap-1.5 mt-0.5">
+              <span className="text-sky-400">BUY</span>
+              <span className="text-slate-500">&bull;</span>
+              <span className="text-amber-400">SELL</span>
+              <span className="text-slate-500">&bull;</span>
+              <span className="text-purple-400">BORROW</span>
+              <span className="text-slate-500">&bull;</span>
+              <span className="text-emerald-400">EXCHANGE</span>
+              <span className="text-slate-500">&bull;</span>
+              <span className="text-pink-400">DONATE</span>
+            </p>
           </div>
         </div>
 
