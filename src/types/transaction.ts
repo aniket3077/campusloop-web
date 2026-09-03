@@ -6,6 +6,7 @@ export type TransactionStatus =
   | 'RETURNED'
   | 'DISPUTED'
   | 'COMPLETED'
+  | 'RATED'
   | 'CANCELLED';
 
 export interface Transaction {

@@ -113,6 +113,7 @@ export const TRANSACTION_STATUS_CONFIG: Record<
   RETURNED: { label: 'Returned to Hub', badgeClass: 'bg-teal-100 text-teal-800' },
   DISPUTED: { label: 'Dispute Flagged', badgeClass: 'bg-rose-100 text-rose-800' },
   COMPLETED: { label: 'Completed Cycle', badgeClass: 'bg-slate-100 text-slate-800' },
+  RATED: { label: 'Completed & Rated', badgeClass: 'bg-emerald-100 text-emerald-800' },
   CANCELLED: { label: 'Cancelled', badgeClass: 'bg-slate-200 text-slate-600' },
 };
 

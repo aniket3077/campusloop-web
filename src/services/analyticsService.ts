@@ -21,7 +21,7 @@ export const analyticsService = {
 
   async getMonthlyCirculation(collegeId?: string): Promise<MonthlyCirculation[]> {
     if (!USE_MOCK_DATA) {
-      return apiClient.get<MonthlyCirculation[]>('/analytics/circulation-trend', { collegeId });
+      return apiClient.get<MonthlyCirculation[]>('/analytics/monthly', { collegeId });
     }
 
     await delay(200);

@@ -141,7 +141,10 @@ export const TransactionsPage: React.FC = () => {
     {
       header: 'Status',
       render: (tx) => {
-        const conf = TRANSACTION_STATUS_CONFIG[tx.status];
+        const conf = TRANSACTION_STATUS_CONFIG[tx.status] || {
+          label: tx.status || 'Active',
+          badgeClass: 'bg-slate-100 text-slate-800',
+        };
         return (
           <span className={`text-xs px-2.5 py-1 rounded-full font-medium ${conf.badgeClass}`}>
             {conf.label}
