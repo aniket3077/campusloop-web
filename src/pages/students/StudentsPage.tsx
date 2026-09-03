@@ -153,7 +153,12 @@ export const StudentsPage: React.FC = () => {
     {
       header: 'Status',
       render: (s) => {
-        const conf = VERIFICATION_STATUS_CONFIG[s.status];
+        const key = s.verificationStatus || s.status || 'VERIFIED';
+        const conf = VERIFICATION_STATUS_CONFIG[key] ||
+          VERIFICATION_STATUS_CONFIG[s.status] || {
+            label: String(key),
+            badgeClass: 'bg-emerald-100 text-emerald-800',
+          };
         return (
           <span className={`text-xs px-2.5 py-1 rounded-full font-medium ${conf.badgeClass}`}>
             {conf.label}

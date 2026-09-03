@@ -1,8 +1,17 @@
-export type StudentVerificationStatus = 'VERIFIED' | 'PENDING' | 'REJECTED' | 'SUSPENDED';
+export type StudentVerificationStatus =
+  | 'VERIFIED'
+  | 'ACTIVE'
+  | 'PENDING'
+  | 'ID_PENDING'
+  | 'EMAIL_PENDING'
+  | 'UNVERIFIED'
+  | 'REJECTED'
+  | 'SUSPENDED';
 
 export interface Student {
   id: string;
   fullName: string;
+  name?: string;
   email: string;
   rollNumber: string;
   collegeId: string;
@@ -13,6 +22,7 @@ export interface Student {
   trustScore: number; // 0 - 100
   strikes: number; // Disciplinary strikes
   status: StudentVerificationStatus;
+  verificationStatus?: string;
   joinedAt: string;
   itemsShared: number;
   itemsBorrowed: number;

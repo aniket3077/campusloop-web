@@ -93,11 +93,15 @@ export const LISTING_STATUS_CONFIG: Record<
 };
 
 export const VERIFICATION_STATUS_CONFIG: Record<
-  StudentVerificationStatus,
+  string,
   { label: string; badgeClass: string }
 > = {
   VERIFIED: { label: 'Verified Student', badgeClass: 'bg-emerald-100 text-emerald-800' },
+  ACTIVE: { label: 'Active Student', badgeClass: 'bg-emerald-100 text-emerald-800' },
   PENDING: { label: 'ID Pending Review', badgeClass: 'bg-amber-100 text-amber-800' },
+  ID_PENDING: { label: 'ID Pending Review', badgeClass: 'bg-amber-100 text-amber-800' },
+  EMAIL_PENDING: { label: 'Email Pending', badgeClass: 'bg-sky-100 text-sky-800' },
+  UNVERIFIED: { label: 'Unverified', badgeClass: 'bg-slate-100 text-slate-700' },
   REJECTED: { label: 'ID Rejected', badgeClass: 'bg-rose-100 text-rose-800' },
   SUSPENDED: { label: 'Suspended Account', badgeClass: 'bg-slate-200 text-slate-800' },
 };

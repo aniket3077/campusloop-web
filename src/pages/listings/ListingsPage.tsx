@@ -207,10 +207,10 @@ export const ListingsPage: React.FC = () => {
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
           {listings.map((item) => {
-            const catConf = CATEGORY_CONFIG[item.category] || CATEGORY_CONFIG.OTHER;
-            const condConf = CONDITION_CONFIG[item.condition];
-            const statusConf = LISTING_STATUS_CONFIG[item.status];
-            const typeConf = LISTING_TYPE_CONFIG[item.type];
+            const catConf = CATEGORY_CONFIG[item.category] || CATEGORY_CONFIG.OTHER || { label: item.category || 'General', bg: 'bg-slate-100', text: 'text-slate-800', border: 'border-slate-300' };
+            const condConf = CONDITION_CONFIG[item.condition] || { label: item.condition || 'Good', badgeClass: 'bg-blue-100 text-blue-800' };
+            const statusConf = LISTING_STATUS_CONFIG[item.status] || { label: item.status || 'Active', badgeClass: 'bg-emerald-100 text-emerald-800' };
+            const typeConf = LISTING_TYPE_CONFIG[item.type] || { label: item.type || 'Standard', badgeClass: 'bg-purple-100 text-purple-800 border-purple-300' };
 
             return (
               <div

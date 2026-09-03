@@ -113,7 +113,7 @@ export const ReportsPage: React.FC = () => {
     {
       header: 'Priority',
       render: (r) => {
-        const conf = REPORT_PRIORITY_CONFIG[r.priority];
+        const conf = REPORT_PRIORITY_CONFIG[r.priority] || { label: r.priority || 'Medium', badgeClass: 'bg-blue-100 text-blue-800' };
         return (
           <span className={`text-[11px] px-2 py-0.5 rounded-full font-semibold ${conf.badgeClass}`}>
             {conf.label}
@@ -124,7 +124,7 @@ export const ReportsPage: React.FC = () => {
     {
       header: 'Status',
       render: (r) => {
-        const conf = REPORT_STATUS_CONFIG[r.status];
+        const conf = REPORT_STATUS_CONFIG[r.status] || { label: r.status || 'Open', badgeClass: 'bg-slate-100 text-slate-800' };
         return (
           <span className={`text-xs px-2.5 py-1 rounded-full font-medium ${conf.badgeClass}`}>
             {conf.label}
