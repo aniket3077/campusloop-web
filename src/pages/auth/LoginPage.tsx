@@ -5,19 +5,27 @@ import { useAuth } from '../../hooks/useAuth';
 import { useToast } from '../../hooks/useToast';
 import { Input } from '../../components/common/Input';
 import { Button } from '../../components/common/Button';
+import { STORAGE_KEYS } from '../../utils/constants';
 
 export const LoginPage: React.FC = () => {
   const navigate = useNavigate();
   const location = useLocation();
-  const { login, switchRole } = useAuth();
+  const { login } = useAuth();
   const { success, error } = useToast();
 
   const [email, setEmail] = useState('superadmin@campusloop.in');
-  const [password, setPassword] = useState('CampusLoop@2026');
+  const [password, setPassword] = useState('SuperAdmin123!');
   const [showPassword, setShowPassword] = useState(false);
   const [rememberMe, setRememberMe] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
   const [formError, setFormError] = useState('');
+
+  React.useEffect(() => {
+    // Clear stale mock storage keys on visiting login
+    try {
+      localStorage.removeItem(STORAGE_KEYS.ACTIVE_COLLEGE);
+    } catch (_) {}
+  }, []);
 
   const from = (location.state as { from?: { pathname?: string } })?.from?.pathname || '/dashboard';
 
@@ -44,18 +52,28 @@ export const LoginPage: React.FC = () => {
     }
   };
 
-  const handleQuickLogin = (role: 'SUPER_ADMIN' | 'COLLEGE_ADMIN') => {
-    if (role === 'SUPER_ADMIN') {
-      setEmail('superadmin@campusloop.in');
-      setPassword('Admin@CampusLoop2026');
-      switchRole('SUPER_ADMIN');
-    } else {
-      setEmail('admin@iitb.ac.in');
-      setPassword('CampusIITB@2026');
-      switchRole('COLLEGE_ADMIN');
+  const handleQuickLogin = async (role: 'SUPER_ADMIN' | 'COLLEGE_ADMIN') => {
+    setIsLoading(true);
+    setFormError('');
+    try {
+      if (role === 'SUPER_ADMIN') {
+        setEmail('superadmin@campusloop.in');
+        setPassword('SuperAdmin123!');
+        await login({ email: 'superadmin@campusloop.in', password: 'SuperAdmin123!', rememberMe: true });
+      } else {
+        setEmail('admin.iitb@campusloop.in');
+        setPassword('CollegeAdmin123!');
+        await login({ email: 'admin.iitb@campusloop.in', password: 'CollegeAdmin123!', rememberMe: true });
+      }
+      success('Authenticated', `Signed in as ${role === 'SUPER_ADMIN' ? 'Super Admin' : 'IITB College Admin'}`);
+      navigate('/dashboard', { replace: true });
+    } catch (err: unknown) {
+      const msg = (err as Error).message || 'Failed to authenticate.';
+      setFormError(msg);
+      error('Login Failed', msg);
+    } finally {
+      setIsLoading(false);
     }
-    success('Quick Demo Session Active', `Signed in as ${role === 'SUPER_ADMIN' ? 'Super Admin' : 'IITB College Admin'}`);
-    navigate('/dashboard', { replace: true });
   };
 
   return (
