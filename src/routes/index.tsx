@@ -5,6 +5,7 @@ import { AuthLayout } from '../layouts/AuthLayout';
 import { ProtectedRoute } from './ProtectedRoute';
 import { RoleRoute } from './RoleRoute';
 
+import { LandingPage } from '../pages/LandingPage';
 import { LoginPage } from '../pages/auth/LoginPage';
 import { DashboardPage } from '../pages/dashboard/DashboardPage';
 import { CollegesPage } from '../pages/colleges/CollegesPage';
@@ -25,26 +26,27 @@ import { NotFoundPage } from '../pages/NotFoundPage';
 export const AppRoutes: React.FC = () => {
   return (
     <Routes>
-      {/* Auth Route */}
+      {/* Public Business Showcase Landing Page */}
+      <Route path="/" element={<LandingPage />} />
+
+      {/* Public Auth Route */}
       <Route element={<AuthLayout />}>
         <Route path="/login" element={<LoginPage />} />
       </Route>
 
       {/* Protected Admin Routes */}
       <Route
-        path="/"
         element={
           <ProtectedRoute>
             <AdminLayout />
           </ProtectedRoute>
         }
       >
-        <Route index element={<Navigate to="/dashboard" replace />} />
-        <Route path="dashboard" element={<DashboardPage />} />
+        <Route path="/dashboard" element={<DashboardPage />} />
 
         {/* Super Admin exclusive routes */}
         <Route
-          path="colleges"
+          path="/colleges"
           element={
             <RoleRoute allowedRoles={['SUPER_ADMIN']}>
               <CollegesPage />
@@ -52,7 +54,7 @@ export const AppRoutes: React.FC = () => {
           }
         />
         <Route
-          path="college-admins"
+          path="/college-admins"
           element={
             <RoleRoute allowedRoles={['SUPER_ADMIN']}>
               <CollegeAdminsPage />
@@ -60,7 +62,7 @@ export const AppRoutes: React.FC = () => {
           }
         />
         <Route
-          path="revenue"
+          path="/revenue"
           element={
             <RoleRoute allowedRoles={['SUPER_ADMIN']}>
               <RevenuePage />
@@ -68,7 +70,7 @@ export const AppRoutes: React.FC = () => {
           }
         />
         <Route
-          path="audit-logs"
+          path="/audit-logs"
           element={
             <RoleRoute allowedRoles={['SUPER_ADMIN']}>
               <AuditLogsPage />
@@ -77,15 +79,15 @@ export const AppRoutes: React.FC = () => {
         />
 
         {/* Accessible to both Super Admin & College Admin */}
-        <Route path="students" element={<StudentsPage />} />
-        <Route path="listings" element={<ListingsPage />} />
-        <Route path="transactions" element={<TransactionsPage />} />
-        <Route path="reports" element={<ReportsPage />} />
-        <Route path="pickup-locations" element={<PickupLocationsPage />} />
-        <Route path="analytics" element={<AnalyticsPage />} />
-        <Route path="impact" element={<ImpactPage />} />
-        <Route path="notifications" element={<NotificationsPage />} />
-        <Route path="settings" element={<SettingsPage />} />
+        <Route path="/students" element={<StudentsPage />} />
+        <Route path="/listings" element={<ListingsPage />} />
+        <Route path="/transactions" element={<TransactionsPage />} />
+        <Route path="/reports" element={<ReportsPage />} />
+        <Route path="/pickup-locations" element={<PickupLocationsPage />} />
+        <Route path="/analytics" element={<AnalyticsPage />} />
+        <Route path="/impact" element={<ImpactPage />} />
+        <Route path="/notifications" element={<NotificationsPage />} />
+        <Route path="/settings" element={<SettingsPage />} />
       </Route>
 
       {/* 404 Route */}
