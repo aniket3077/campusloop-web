@@ -77,8 +77,13 @@ export const LISTING_TYPE_CONFIG: Record<
   { label: string; badgeClass: string }
 > = {
   FREE_GIVEAWAY: { label: 'Free Giveaway (Pay-it-forward)', badgeClass: 'bg-emerald-100 text-emerald-800 border-emerald-300' },
+  DONATE: { label: 'Free Giveaway (Pay-it-forward)', badgeClass: 'bg-emerald-100 text-emerald-800 border-emerald-300' },
   BORROW_RENT: { label: 'Borrow / Micro-Rent', badgeClass: 'bg-sky-100 text-sky-800 border-sky-300' },
+  BORROW: { label: 'Borrow / Micro-Rent', badgeClass: 'bg-sky-100 text-sky-800 border-sky-300' },
   SELL_FAIR_PRICE: { label: 'Fair Resale', badgeClass: 'bg-purple-100 text-purple-800 border-purple-300' },
+  SELL: { label: 'Fair Resale', badgeClass: 'bg-purple-100 text-purple-800 border-purple-300' },
+  BUY: { label: 'Buy Request', badgeClass: 'bg-amber-100 text-amber-800 border-amber-300' },
+  EXCHANGE: { label: 'Resource Exchange', badgeClass: 'bg-teal-100 text-teal-800 border-teal-300' },
 };
 
 export const LISTING_STATUS_CONFIG: Record<

@@ -9,7 +9,15 @@ export type ListingCategory =
 
 export type ListingCondition = 'NEW' | 'LIKE_NEW' | 'GOOD' | 'FAIR';
 
-export type ListingType = 'FREE_GIVEAWAY' | 'BORROW_RENT' | 'SELL_FAIR_PRICE';
+export type ListingType =
+  | 'FREE_GIVEAWAY'
+  | 'BORROW_RENT'
+  | 'SELL_FAIR_PRICE'
+  | 'DONATE'
+  | 'BORROW'
+  | 'SELL'
+  | 'BUY'
+  | 'EXCHANGE';
 
 export type ListingStatus = 'ACTIVE' | 'PENDING_REVIEW' | 'FLAGGED' | 'COMPLETED' | 'ARCHIVED';
 
