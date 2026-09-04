@@ -98,34 +98,14 @@ export const LandingPage: React.FC = () => {
 
   const colleges = [
     {
-      name: 'Indian Institute of Technology Bombay',
-      code: 'IITB',
-      location: 'Powai, Mumbai',
-      students: '12,500+ Students',
-      score: '88.5 Circularity',
-      hubs: 'Main Gate Security • Central Library Lounge • Hostel 12',
-      badge: 'Premier Technology Hub',
-      badgeColor: 'bg-blue-50 text-blue-700 border-blue-200',
-    },
-    {
-      name: 'Stanford University',
-      code: 'STANFORD',
-      location: 'California, USA',
-      students: '17,000+ Students',
-      score: '92.0 Circularity',
-      hubs: 'Engineering Quad Bench A • Green Library Hub',
-      badge: 'Global Sustainability Leader',
+      name: 'MIT CSN',
+      code: 'MIT_CSN',
+      location: 'Chhatrapati Sambhajinagar, Maharashtra',
+      students: '3,200+ Students (@mit.asia)',
+      score: '94.5 Circularity',
+      hubs: 'Main Gate Security • Central Library Ground Floor • CSE Block Atrium • Cafeteria',
+      badge: 'Premier Campus Network',
       badgeColor: 'bg-emerald-50 text-emerald-700 border-emerald-200',
-    },
-    {
-      name: 'University of Delhi',
-      code: 'DU',
-      location: 'New Delhi, India',
-      students: '35,000+ Students',
-      score: '76.5 Circularity',
-      hubs: 'North Campus Hub • Arts Faculty Concourse',
-      badge: 'Metropolitan Network',
-      badgeColor: 'bg-purple-50 text-purple-700 border-purple-200',
     },
   ];
 
@@ -165,7 +145,7 @@ export const LandingPage: React.FC = () => {
           <span>Official Circular Network</span>
         </span>
         <span className="text-slate-300">
-          Live across IIT Bombay, Stanford University & Delhi University
+          Live across MIT CSN (mit.asia) • Official Student Circular Network
         </span>
         <span className="hidden md:inline-flex items-center gap-1 text-emerald-400 font-bold ml-1">
           &bull; Cloud Run Active

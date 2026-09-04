@@ -61,11 +61,11 @@ export const LoginPage: React.FC = () => {
         setPassword('SuperAdmin123!');
         await login({ email: 'superadmin@campusloop.in', password: 'SuperAdmin123!', rememberMe: true });
       } else {
-        setEmail('admin.iitb@campusloop.in');
+        setEmail('admin@mit.asia');
         setPassword('CollegeAdmin123!');
-        await login({ email: 'admin.iitb@campusloop.in', password: 'CollegeAdmin123!', rememberMe: true });
+        await login({ email: 'admin@mit.asia', password: 'CollegeAdmin123!', rememberMe: true });
       }
-      success('Authenticated', `Signed in as ${role === 'SUPER_ADMIN' ? 'Super Admin' : 'IITB College Admin'}`);
+      success('Authenticated', `Signed in as ${role === 'SUPER_ADMIN' ? 'Super Admin' : 'MIT CSN College Admin'}`);
       navigate('/dashboard', { replace: true });
     } catch (err: unknown) {
       const msg = (err as Error).message || 'Failed to authenticate.';
@@ -250,7 +250,7 @@ export const LoginPage: React.FC = () => {
                 className="flex items-center justify-center gap-2 p-3 text-xs font-medium rounded-xl border border-emerald-200 bg-emerald-50/60 text-emerald-900 hover:bg-emerald-100 transition-colors"
               >
                 <UserCheck className="w-4 h-4 text-emerald-600" />
-                <span>College Admin (IITB)</span>
+                <span>College Admin (MIT CSN)</span>
               </button>
             </div>
           </div>
