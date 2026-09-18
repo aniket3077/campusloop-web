@@ -28,27 +28,30 @@ export const ImpactPage: React.FC = () => {
   const [departments, setDepartments] = useState<ImpactByDepartment[]>([]);
   const [leaderboard, setLeaderboard] = useState<CollegeLeaderboardItem[]>([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [loadError, setLoadError] = useState<string | null>(null);
+
+  const loadImpactData = async () => {
+    setIsLoading(true);
+    setLoadError(null);
+    try {
+      const filterId = role === 'COLLEGE_ADMIN' ? user?.collegeId : activeCollegeFilter;
+      const [impRes, deptRes, leadRes] = await Promise.all([
+        impactService.getImpactSummary(filterId),
+        impactService.getImpactByDepartment(filterId),
+        analyticsService.getCollegeLeaderboard(),
+      ]);
+      setImpact(impRes);
+      setDepartments(deptRes);
+      setLeaderboard(leadRes);
+    } catch (err: any) {
+      console.error('Impact load failed', err);
+      setLoadError(err?.message || 'Failed to load impact metrics');
+    } finally {
+      setIsLoading(false);
+    }
+  };
 
   useEffect(() => {
-    const loadImpactData = async () => {
-      setIsLoading(true);
-      try {
-        const filterId = role === 'COLLEGE_ADMIN' ? user?.collegeId : activeCollegeFilter;
-        const [impRes, deptRes, leadRes] = await Promise.all([
-          impactService.getImpactSummary(filterId),
-          impactService.getImpactByDepartment(filterId),
-          analyticsService.getCollegeLeaderboard(),
-        ]);
-        setImpact(impRes);
-        setDepartments(deptRes);
-        setLeaderboard(leadRes);
-      } catch (err) {
-        console.error('Impact load failed', err);
-      } finally {
-        setIsLoading(false);
-      }
-    };
-
     loadImpactData();
   }, [role, user?.collegeId, activeCollegeFilter]);
 
@@ -59,8 +62,20 @@ export const ImpactPage: React.FC = () => {
     );
   };
 
-  if (isLoading || !impact) {
+  if (isLoading) {
     return <LoadingSpinner size="lg" label="Compiling circular impact ledger..." />;
+  }
+
+  if (loadError || !impact) {
+    return (
+      <div className="flex flex-col items-center justify-center p-12 bg-white rounded-2xl border border-slate-200 text-center max-w-md mx-auto my-12">
+        <p className="text-base font-semibold text-slate-800 mb-1">Unable to Load Impact Data</p>
+        <p className="text-xs text-slate-500 mb-4">{loadError || 'An unexpected error occurred while compiling circular metrics.'}</p>
+        <Button onClick={loadImpactData} variant="primary" size="sm">
+          Retry
+        </Button>
+      </div>
+    );
   }
 
   return (

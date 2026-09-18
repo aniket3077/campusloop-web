@@ -17,6 +17,7 @@ import { Badge } from '../../components/common/Badge';
 import { StatCard } from '../../components/common/StatCard';
 import { LoadingSpinner } from '../../components/common/LoadingSpinner';
 import { Table, Column } from '../../components/common/Table';
+import { Button } from '../../components/common/Button';
 import { useToast } from '../../hooks/useToast';
 import { formatDate } from '../../utils/formatters';
 
@@ -25,29 +26,45 @@ export const RevenuePage: React.FC = () => {
   const [revenueData, setRevenueData] = useState<RevenueMetric | null>(null);
   const [subscriptions, setSubscriptions] = useState<CollegeSubscription[]>([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [loadError, setLoadError] = useState<string | null>(null);
+
+  const loadRevenue = async () => {
+    setIsLoading(true);
+    setLoadError(null);
+    try {
+      const [metricRes, subRes] = await Promise.all([
+        revenueService.getRevenueMetrics(),
+        revenueService.getSubscriptions(),
+      ]);
+      setRevenueData(metricRes);
+      setSubscriptions(subRes);
+    } catch (err) {
+      const msg = (err as Error).message || 'Failed to load revenue metrics';
+      setLoadError(msg);
+      error('Failed to load revenue metrics', msg);
+    } finally {
+      setIsLoading(false);
+    }
+  };
 
   useEffect(() => {
-    const loadRevenue = async () => {
-      setIsLoading(true);
-      try {
-        const [metricRes, subRes] = await Promise.all([
-          revenueService.getRevenueMetrics(),
-          revenueService.getSubscriptions(),
-        ]);
-        setRevenueData(metricRes);
-        setSubscriptions(subRes);
-      } catch (err) {
-        error('Failed to load revenue metrics', (err as Error).message);
-      } finally {
-        setIsLoading(false);
-      }
-    };
-
     loadRevenue();
   }, []);
 
-  if (isLoading || !revenueData) {
+  if (isLoading) {
     return <LoadingSpinner size="lg" label="Loading platform revenue & subscriptions..." />;
+  }
+
+  if (loadError || !revenueData) {
+    return (
+      <div className="flex flex-col items-center justify-center p-12 bg-white rounded-2xl border border-slate-200 text-center max-w-md mx-auto my-12">
+        <p className="text-base font-semibold text-slate-800 mb-1">Unable to Load Revenue Data</p>
+        <p className="text-xs text-slate-500 mb-4">{loadError || 'An unexpected error occurred while loading revenue data.'}</p>
+        <Button onClick={loadRevenue} variant="primary" size="sm">
+          Retry
+        </Button>
+      </div>
+    );
   }
 
   const { summary, monthlyTrends, revenueByCollege, recentTransactions } = revenueData;

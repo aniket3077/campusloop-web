@@ -35,6 +35,9 @@ export const studentService = {
 
   async updateVerificationStatus(studentId: string, status: StudentVerificationStatus): Promise<Student> {
     if (!USE_MOCK_DATA) {
+      if (['VERIFIED', 'REJECTED', 'PENDING', 'ID_PENDING', 'UNVERIFIED'].includes(status)) {
+        return apiClient.patch<Student>(`/students/${studentId}/verify`, { status });
+      }
       return apiClient.patch<Student>(`/students/${studentId}/status`, { status });
     }
 

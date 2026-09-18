@@ -5,6 +5,8 @@ import { MOCK_SUPER_ADMIN, MOCK_COLLEGE_ADMIN } from '../services/mockData';
 import { storage } from '../utils/storage';
 import { STORAGE_KEYS } from '../utils/constants';
 
+import { USE_MOCK_DATA } from '../services/api';
+
 interface AuthContextType {
   user: User | null;
   role: Role | null;
@@ -21,9 +23,12 @@ const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
 export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [user, setUser] = useState<User | null>(() => {
-    // Default to Super Admin for seamless initial demo access if not stored
     const stored = authService.getStoredUser();
-    return stored || MOCK_SUPER_ADMIN;
+    const token = authService.getStoredToken();
+    if (stored && token && (!token.startsWith('mock_') || USE_MOCK_DATA)) {
+      return stored;
+    }
+    return USE_MOCK_DATA ? MOCK_SUPER_ADMIN : null;
   });
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [activeCollegeFilter, setActiveCollegeFilterState] = useState<string>(() => {
@@ -39,19 +44,19 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     // Initial token verification
     const initAuth = async () => {
       try {
+        const token = authService.getStoredToken();
+        if (!token) {
+          setUser(USE_MOCK_DATA ? MOCK_SUPER_ADMIN : null);
+          return;
+        }
+
         const currentUser = await authService.getCurrentUser();
         if (currentUser) {
           setUser(currentUser);
-        } else {
-          // If no user saved, initialize with Super Admin session for demo convenience
-          authService.persistSession({
-            user: MOCK_SUPER_ADMIN,
-            tokens: {
-              accessToken: 'mock_jwt_super_admin',
-              refreshToken: 'mock_jwt_refresh',
-            },
-          });
+        } else if (USE_MOCK_DATA) {
           setUser(MOCK_SUPER_ADMIN);
+        } else {
+          setUser(null);
         }
       } catch (err) {
         console.error('Failed to restore auth session', err);
